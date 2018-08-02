@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserServiceInter {
 
 		long start = System.currentTimeMillis();
 
-		for (j = 0; j < 1000; j++) {
+		for (j = 0; j < 100000; j++) {
 			user.setId(String.valueOf(new Random()));
 
 			User users = userDao.save(user);
@@ -45,18 +45,24 @@ public class UserServiceImpl implements UserServiceInter {
 	@Override
 	public List<User> viewAllUser() {
 		long start = System.currentTimeMillis();
-		Iterable<User> list=userDao.findAll();
-		List<User> user=(List<User>) list.iterator();
+		userDao.findAll();
 		long end = System.currentTimeMillis();
 		long result = (end - start);
 		String time = String.valueOf(result);
 		System.out.println("This is findall time   :" + time);
-		return user;
+		return null;
 	}
 
 	/*
 	 * @Override public void deleteUser(User user) { userDao.delete(user);
-	 * 
+	 * // TODO Auto-generated method stub
+		long start=System.currentTimeMillis();
+		 userRepository.findAll();
+		long end=System.currentTimeMillis();
+		long result=(end-start);
+		String time =  String.valueOf(result);
+		log.info("This is findall time   :"+time);
+		return null;
 	 * }
 	 */
 
